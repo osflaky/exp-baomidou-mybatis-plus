@@ -49,7 +49,7 @@ buildscript {
             "assertj-core"               : "org.assertj:assertj-core:3.27.7",
             "junit-jupiter"              : "org.junit.jupiter:junit-jupiter:${junitVersion}",
             "fastjson"                   : "com.alibaba:fastjson:2.0.62",
-            "jackson"                    : "com.fasterxml.jackson.core:jackson-databind:2.20.1",
+            "jackson"                    : "com.fasterxml.jackson.core:jackson-databind:2.22.2",
             "jackson3"                   : "tools.jackson.core:jackson-databind:3.0.3",
             "gson"                       : "com.google.code.gson:gson:2.13.2",
             "lagarto"                    : "org.jodd:jodd-lagarto:6.0.6",
