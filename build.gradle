@@ -67,7 +67,7 @@ buildscript {
             "firebird"                   : "org.firebirdsql.jdbc:jaybird:5.0.10.java8",
             "gaussdb"                    : "com.huaweicloud.gaussdb:gaussdbjdbc:506.0.0.b058",
             //cache
-            "mybatis-caffeine"           : "org.mybatis.caches:mybatis-caffeine:1.2.0",
+            "mybatis-caffeine"           : "org.mybatis.caches:mybatis-caffeine:1.2.2",
             //code generator
             "velocity"            : "org.apache.velocity:velocity-engine-core:2.4.1",
             "freemarker"          : "org.freemarker:freemarker:2.3.34",
