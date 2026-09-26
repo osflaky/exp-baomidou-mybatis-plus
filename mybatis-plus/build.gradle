@@ -1,0 +1,51 @@
+apply plugin: 'kotlin'
+
+compileKotlin{
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+compileTestKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjvm-default=all']
+    }
+}
+
+configurations {
+    testImplementation.exclude module: 'mybatis-plus-jsqlparser-4.9'
+}
+
+dependencies {
+    api project(":mybatis-plus-core")
+    api project(":mybatis-plus-annotation")
+    api project(":mybatis-plus-spring")
+
+    api "${lib.mybatis}"
+
+    implementation "${lib."mybatis-spring"}"
+    implementation "${lib."kotlin-stdlib-jdk8"}"
+    implementation project(":mybatis-plus-jsqlparser-support:mybatis-plus-jsqlparser-4.9")
+
+    testImplementation "${lib.'spring-web'}"
+
+    testImplementation "${lib.'spring-test'}"
+    testImplementation "${lib.'spring-aop'}"
+    testImplementation "${lib.'aspectjweaver'}"
+    testImplementation "${lib."jackson"}"
+    testImplementation "${lib."fastjson"}"
+    testImplementation "${lib."gson"}"
+
+    testImplementation "${lib.h2}"
+    testImplementation "${lib.sqlserver}"
+    testImplementation "${lib.postgresql}"
+    testImplementation "${lib.oracle}"
+    testImplementation "${lib.mysql}"
+    testImplementation "${lib.'spring-context-support'}"
+    testImplementation "${lib.'spring-jdbc'}"
+    testImplementation "${lib.'slf4j-api'}"
+    testImplementation "${lib.'logback-classic'}"
+    testImplementation "${lib.cglib}"
+    testImplementation "${lib.postgresql}"
+    testImplementation "${lib.gaussdb}"
+    testImplementation project(":mybatis-plus-jsqlparser-support:mybatis-plus-jsqlparser")
+//    testCompile ('org.apache.phoenix:phoenix-core:5.0.0-HBase-2.0')
+}

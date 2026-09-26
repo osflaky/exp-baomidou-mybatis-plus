@@ -1,0 +1,18 @@
+compileJava {
+    options.release = 11
+}
+
+dependencies {
+    api "com.github.jsqlparser:jsqlparser:5.2"
+    api project(":mybatis-plus-jsqlparser-support:mybatis-plus-jsqlparser-common")
+    implementation "${lib."slf4j-api"}"
+    implementation "de.ruedigermoeller:fst:3.0.3"
+    implementation "org.apache.fury:fury-core:0.9.0"
+    implementation "${lib.caffeine}"
+    testImplementation "io.github.classgraph:classgraph:4.8.184"
+    testImplementation "${lib."spring-context-support"}"
+    testImplementation "${lib.h2}"
+    testImplementation group: 'com.google.guava', name: 'guava', version: '33.3.1-jre'
+}
+
+compileJava.dependsOn(processResources)

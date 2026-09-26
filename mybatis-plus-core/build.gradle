@@ -1,0 +1,12 @@
+dependencies {
+    api project(":mybatis-plus-annotation")
+    api "${lib.mybatis}"
+
+    implementation "${lib.cglib}"
+    implementation "${lib.'spring-aop'}"
+    implementation "${lib.'imadcn'}"
+
+    testImplementation "${lib.'logback-classic'}"
+    testImplementation "${lib."mybatis-spring"}"
+    testImplementation "${lib.'spring-jdbc'}"
+}
