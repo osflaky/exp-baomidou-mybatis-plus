@@ -1,0 +1,33 @@
+apply plugin: 'kotlin'
+
+compileTestKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjvm-default=all']
+    }
+}
+dependencies {
+    implementation project(":mybatis-plus-spring")
+    implementation "${lib.velocity}"
+    implementation "${lib.freemarker}"
+    implementation "${lib.beetl}"
+    implementation "${lib.enjoy}"
+    implementation "${lib.'swagger-annotations'}"
+    implementation "io.springfox:springfox-swagger2:3.0.0"
+    implementation "${lib."kotlin-stdlib-jdk8"}"
+
+
+    compileOnly "org.jetbrains:annotations:24.1.0"
+    testImplementation "${lib.sqlserver}"
+    testImplementation "${lib.postgresql}"
+    testImplementation "${lib.oracle}"
+    testImplementation lib.dm as ConfigurableFileTree
+    testImplementation "${lib.h2}"
+    testImplementation "${lib.mysql}"
+    testImplementation "${lib.sqlite}"
+    testImplementation "${lib.firebird}"
+    testImplementation "${lib.gaussdb}"
+    testImplementation "${lib.'swagger-annotations'}"
+    testImplementation "${lib.'logback-classic'}"
+    testImplementation "${lib.'spring-web'}"
+    testCompileOnly "org.jetbrains:annotations:24.1.0"
+}

@@ -1,0 +1,60 @@
+package com.baomidou.mybatisplus.test.pom;
+
+import jodd.io.FileUtil;
+import jodd.jerry.Jerry;
+import jodd.jerry.JerryParser;
+import jodd.lagarto.dom.LagartoDOMBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 检查pom依赖
+ *
+ * @author nieqiurong 2019/2/9.
+ */
+class GeneratePomTest {
+
+    @Data
+    @AllArgsConstructor
+    private static class Dependency {
+        private String artifactId;
+        private String scope;
+        private boolean optional;
+    }
+
+    @Test
+    void test() throws IOException {
+        try (InputStream inputStream = new FileInputStream("build/publications/maven/pom-default.xml")) {
+            JerryParser jerryParser = Jerry.create((new LagartoDOMBuilder().enableXmlMode()));
+            Jerry doc = jerryParser.parse(FileUtil.readUTFString(inputStream));
+            Jerry dependencies = doc.s("dependencies dependency");
+            Map<String, Dependency> dependenciesMap = new HashMap<>();
+            dependencies.forEach($this -> {
+                String artifactId = $this.s("artifactId").text();
+                dependenciesMap.put(artifactId, new Dependency(artifactId, $this.s("scope").text(), Boolean.parseBoolean($this.s("optional").text())));
+            });
+            Dependency extension = dependenciesMap.get("mybatis-plus-spring");
+            Assertions.assertEquals("compile", extension.getScope());
+            Assertions.assertFalse(extension.isOptional());
+            Dependency mybatisSpring = dependenciesMap.get("mybatis-spring");
+            Assertions.assertEquals("compile", mybatisSpring.getScope());
+            Assertions.assertTrue(mybatisSpring.isOptional());
+            Dependency kotlinStdlib = dependenciesMap.get("kotlin-stdlib-jdk8");
+            Assertions.assertEquals("compile", kotlinStdlib.getScope());
+            Assertions.assertTrue(kotlinStdlib.isOptional());
+            Dependency jsqlparserLib = dependenciesMap.get("mybatis-plus-jsqlparser-4.9");
+            Assertions.assertEquals("compile", jsqlparserLib.getScope());
+            Assertions.assertTrue(jsqlparserLib.isOptional());
+
+        }
+    }
+
+}

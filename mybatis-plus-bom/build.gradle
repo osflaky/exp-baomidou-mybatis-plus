@@ -1,0 +1,34 @@
+buildscript {
+    repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://repo.spring.io/plugins-release" }
+    }
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:1.1.7"
+    }
+}
+
+apply plugin: "io.spring.dependency-management"
+
+dependencyManagement {
+    dependencies {
+        dependency "com.baomidou:mybatis-plus-annotation:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-core:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-extension:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-generator:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-solon-plugin:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-spring:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-boot-starter:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-boot-starter-test:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-spring-boot-autoconfigure:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-spring-boot-test-autoconfigure:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-spring-boot-native-image:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-spring-boot3-starter:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-spring-boot3-starter-test:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-spring-boot4-starter:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-spring-boot4-starter-test:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-jsqlparser:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-jsqlparser-4.9:${APP_VERSION}"
+        dependency "com.baomidou:mybatis-plus-jsqlparser-5.0:${APP_VERSION}"
+    }
+}
