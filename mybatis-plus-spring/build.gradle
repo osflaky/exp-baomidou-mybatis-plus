@@ -1,0 +1,27 @@
+apply plugin: 'kotlin'
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+compileTestKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjvm-default=all']
+    }
+}
+
+dependencies {
+    api project(":mybatis-plus-extension")
+    implementation "${lib."mybatis-spring"}"
+
+    implementation "${lib."kotlin-stdlib-jdk8"}"
+    implementation "${lib."kotlin-reflect"}"
+    implementation "${lib."spring-context-support"}"
+    implementation "${lib."spring-jdbc"}"
+    implementation "${lib."slf4j-api"}"
+    testImplementation "${lib.h2}"
+    testImplementation "${lib.mysql}"
+    testImplementation "${lib.'logback-classic'}"
+}
